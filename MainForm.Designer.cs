@@ -35,15 +35,15 @@
             this.ProcOpenLabel = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.timers1 = new WYSTrainer.Timers();
             this.label2 = new System.Windows.Forms.Label();
-            this.statisticts1 = new WYSTrainer.Statisticts();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.SettableB = new System.Windows.Forms.Button();
             this.HPBOSS = new System.Windows.Forms.Button();
             this.Info = new System.Windows.Forms.Button();
             this.Timers2 = new System.Windows.Forms.Button();
             this.Statisticts2 = new System.Windows.Forms.Button();
+            this.timers1 = new WYSTrainer.Timers();
+            this.statisticts1 = new WYSTrainer.Statisticts();
             this.label7 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -113,16 +113,6 @@
             this.panel1.TabIndex = 0;
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             // 
-            // timers1
-            // 
-            this.timers1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(36)))));
-            this.timers1.Location = new System.Drawing.Point(197, -1);
-            this.timers1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.timers1.Name = "timers1";
-            this.timers1.Size = new System.Drawing.Size(720, 554);
-            this.timers1.TabIndex = 3;
-            this.timers1.Load += new System.EventHandler(this.timers1_Load);
-            // 
             // label2
             // 
             this.label2.BackColor = System.Drawing.Color.Transparent;
@@ -133,16 +123,6 @@
             this.label2.Size = new System.Drawing.Size(133, 27);
             this.label2.TabIndex = 24;
             this.label2.Text = "txshiro#4353";
-            // 
-            // statisticts1
-            // 
-            this.statisticts1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(36)))));
-            this.statisticts1.Location = new System.Drawing.Point(197, 0);
-            this.statisticts1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.statisticts1.Name = "statisticts1";
-            this.statisticts1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.statisticts1.Size = new System.Drawing.Size(720, 556);
-            this.statisticts1.TabIndex = 20;
             // 
             // pictureBox3
             // 
@@ -230,6 +210,26 @@
             this.Statisticts2.Text = "Statisticts";
             this.Statisticts2.UseVisualStyleBackColor = false;
             this.Statisticts2.Click += new System.EventHandler(this.Statisticts2_Click);
+            // 
+            // timers1
+            // 
+            this.timers1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(36)))));
+            this.timers1.Location = new System.Drawing.Point(197, -1);
+            this.timers1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.timers1.Name = "timers1";
+            this.timers1.Size = new System.Drawing.Size(720, 554);
+            this.timers1.TabIndex = 3;
+            this.timers1.Load += new System.EventHandler(this.timers1_Load);
+            // 
+            // statisticts1
+            // 
+            this.statisticts1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(36)))));
+            this.statisticts1.Location = new System.Drawing.Point(197, 0);
+            this.statisticts1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.statisticts1.Name = "statisticts1";
+            this.statisticts1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.statisticts1.Size = new System.Drawing.Size(720, 556);
+            this.statisticts1.TabIndex = 20;
             // 
             // label7
             // 

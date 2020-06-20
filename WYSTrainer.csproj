@@ -51,7 +51,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Annotation 2020-06-15 193704.ico</ApplicationIcon>
+    <ApplicationIcon>WYSICon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <SignManifests>false</SignManifests>
@@ -176,7 +176,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Annotation 2020-06-15 193704.ico" />
+    <Content Include="WYSICon.ico" />
     <None Include="Resources\nerd.png" />
     <None Include="Resources\clap.gif" />
     <None Include="Resources\sigh.gif" />
