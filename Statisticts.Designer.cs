@@ -104,7 +104,7 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.label5.Location = new System.Drawing.Point(150, 314);
+            this.label5.Location = new System.Drawing.Point(150, 280);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(20, 22);
             this.label5.TabIndex = 4;
@@ -189,7 +189,7 @@
             this.xpos.BackColor = System.Drawing.Color.Transparent;
             this.xpos.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.xpos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.xpos.Location = new System.Drawing.Point(150, 279);
+            this.xpos.Location = new System.Drawing.Point(150, 315);
             this.xpos.Name = "xpos";
             this.xpos.Size = new System.Drawing.Size(20, 22);
             this.xpos.TabIndex = 11;
@@ -219,6 +219,7 @@
             this.ypos.Size = new System.Drawing.Size(20, 22);
             this.ypos.TabIndex = 13;
             this.ypos.Text = "0";
+            this.ypos.Click += new System.EventHandler(this.ypos_Click);
             // 
             // label11
             // 

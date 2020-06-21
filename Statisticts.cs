@@ -19,6 +19,7 @@ namespace WYSTrainer
         public static dynamic death;
         public static dynamic chapter;
         public static dynamic xpos1;
+        public static dynamic ypos1;
 
         public Statisticts()
         {
@@ -32,15 +33,16 @@ namespace WYSTrainer
             });
             xpos.Invoke((Action)delegate
             {
-                if(roomID == 130)
-                {
-                    xpos.Text = "Not in level";
-                }
-                else 
-                {
+               
                     xpos.Text = xpos1.ToString();
-                }
             });
+
+            ypos.Invoke((Action)delegate
+            {
+
+                ypos.Text = ypos1.ToString();
+            });
+
             chptText.Invoke((Action)delegate
             {
                 chptText.Text = chapter.ToString();
@@ -110,6 +112,11 @@ namespace WYSTrainer
         }
 
         private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ypos_Click(object sender, EventArgs e)
         {
 
         }

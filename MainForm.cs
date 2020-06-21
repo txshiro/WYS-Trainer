@@ -41,6 +41,10 @@ namespace WYSTrainer
         //Level
         public static bool stopLVLTimer;
         public static bool getLVLTimer;
+
+        //poss
+        public static float xpos1;
+        public static float ypos1;
         public MainForm()
         {
             InitializeComponent();
@@ -57,207 +61,177 @@ namespace WYSTrainer
                 ProcOpenLabel.Text = "Not found!";
                 ProcOpenLabel.ForeColor = Color.Red;
                 Thread.Sleep(1000);
-                return;
+            }
+            else
+            {
+
             }
             bgWorker.ReportProgress(0);
-           /* while(Settable.chalBool == true)
+           if(ProcOpen)
             {
-                 m.WriteMemory("base+360CDE", "byte", "1");
-                 Thread.Sleep(2000);
-                 m.WriteMemory("base+360CDE", "byte", "0");
-                
-            }*/
-            while (true)
-            {
-
-                int vlInt = m.Read2Byte("base+007C1DAC,14,4");
-                int roomID = m.Read2Byte("base+003CA150,0");
-
-                double diffValue = m.ReadDouble("base+007B4A3C,0,2c,10,7ec,300");
-                double deathValue = m.ReadDouble("base+007B9CB0,2c,10,6d8,6f0");
-                double chapter = m.ReadDouble("base+007B9CB0,2c,10,2F4,380");
-                float xpos1 = m.ReadFloat("base+007C41E8,0,134,130,A0");
-
-                Statisticts.vlCount = vlInt;
-                Statisticts.roomID = roomID;
-                Statisticts.diff = diffValue;
-                Statisticts.death = deathValue;
-                Statisticts.chapter = chapter;
-                Statisticts.xpos1 = xpos1;
-
-                if(Settable.chalBool == true)
+                ProcOpenLabel.Text = "Found!";
+                ProcOpenLabel.ForeColor = Color.LightGreen;
+                while (true)
                 {
-                    m.WriteMemory("base+360CDE", "byte", "1");
-                }
-                else
-                {
-                    m.WriteMemory("base+360CDE", "byte", "0");
-                }
+                    int vlInt = m.Read2Byte("base+007C1DAC,14,4");
+                    int roomID = m.Read2Byte("base+003CA150,0");
 
-                statisticts1.NotifyValueChanged();
-                //Get current timers
-                if (getLVLTimer == true)
-                {
-                    currentlvlTime = m.ReadDouble("base+007B9CB0,2c,10,480,4a0");
-                    getLVLTimer = false;
-                }
+                    double diffValue = m.ReadDouble("base+007B4A3C,0,2c,10,7ec,300");
+                    double deathValue = m.ReadDouble("base+007B9CB0,2c,10,6d8,6f0");
+                    double chapter = m.ReadDouble("base+007B9CB0,2c,10,2F4,380");
+                    xpos1 = m.ReadFloat("base+00A0A850,C");
+                    ypos1 = m.ReadFloat("base+009E003C,4");
 
-                if (getGameTimer == true)
-                {
-                    currentgmTime = m.ReadDouble("base+007B4A3C,0,2c,10,108,50");
-                    getGameTimer = false;
-                }
-   
-                else
-                {
-                    m.WriteMemory("base+360CDE", "byte", "0");
-                }
-                //CHAPTER TIME
-                if (getCHPTTimer == true)
-                {
-                    currentchptTime = m.ReadDouble("base+007B4A3C,0,2c,10,798,3c0");
-                    getCHPTTimer = false;
-                }
+                    Statisticts.vlCount = vlInt;
+                    Statisticts.roomID = roomID;
+                    Statisticts.diff = diffValue;
+                    Statisticts.death = deathValue;
+                    Statisticts.chapter = chapter;
+                    Statisticts.xpos1 = xpos1;
+                    Statisticts.ypos1 = ypos1;
 
-                //OTHER THINGS
-                if (aion == true)
-                {
-                    m.WriteMemory("base+211FAA", "byte", "3");
-                }
-                else
-                {
-                    m.WriteMemory("base+211FAA", "byte", "4");
-                }
-
-
-                /* if(collisionoff == true)
-                  {
-                      m.WriteMemory("base+360CDD", "byte", "0");
-                  }
-                  else
-                  {
-                      //m.WriteMemory("base+360CDD", "byte", "160");
-                  }*/
-
-                if (Settable.dontknow == true)
-                {
-                    m.WriteMemory("0x68D2F59A", "byte", "0xC7");
-
-                }
-                else
-                {
-                    m.WriteMemory("0x68D2F59A", "byte", "0xC0");
-                }
-
-                if (Settable.disableTexturesB == true)
-                {
-                    m.WriteMemory("base+3DAEE4", "byte","A3");
-                }
-                else
-                {
-                    m.WriteMemory("base+3DAEE4", "byte", "A4");
-                }
-
-                //Deaths
-                if (Settable.saved == true)
-                {
-                    if (Settable.isDeath == true)
+                  
+                    statisticts1.NotifyValueChanged();
+                    //Get current timers
+                    if (getLVLTimer == true)
                     {
-                        m.WriteMemory("base+007B9CB0,2c,10,6d8,6f0", "double", Settable.deathCount);
-                    }
-                    if (Settable.isRoom == true)
-                    {
-                        m.WriteMemory("base+003CA150,0", "2bytes", Settable.roomIDD);
+                        currentlvlTime = m.ReadDouble("base+007B9CB0,2c,10,480,4a0");
+                        getLVLTimer = false;
                     }
 
-                    if(Settable.isBlur == true)
+                    if (getGameTimer == true)
                     {
-                        m.WriteMemory("0x68D2F59A", "byte", Settable.blurAmount.ToString("X"));
+                        currentgmTime = m.ReadDouble("base+007B4A3C,0,2c,10,108,50");
+                        getGameTimer = false;
                     }
 
-                    /*if (Settable.isDeath == false && Settable.isRoom == true && Settable.isBlur == false)
+                    else
                     {
-                        m.WriteMemory("base+007B9CB0,2c,10,6d8,6f0", "double", deathValue.ToString());
-                        m.WriteMemory("base+003CA150,0", "2bytes", Settable.roomIDD);
-                        m.WriteMemory("0x68D2F59A", "byte", "192");
+                        m.WriteMemory("base+360CDE", "byte", "0");
                     }
-                    if (Settable.isDeath == true && Settable.isRoom == false && Settable.isBlur == false)
+                    //CHAPTER TIME
+                    if (getCHPTTimer == true)
                     {
-                        m.WriteMemory("base+007B9CB0,2c,10,6d8,6f0", "double", Settable.deathCount);
-                        m.WriteMemory("base+003CA150,0", "2bytes", roomID.ToString());
-                        m.WriteMemory("0x68D2F59A", "byte", "192");
+                        currentchptTime = m.ReadDouble("base+007B4A3C,0,2c,10,798,3c0");
+                        getCHPTTimer = false;
                     }
 
-                    if (Settable.isDeath == false && Settable.isRoom == false && Settable.isBlur == true)
+                    //OTHER THINGS
+                    if (aion == true)
                     {
-                        m.WriteMemory("base+007B9CB0,2c,10,6d8,6f0", "double", deathValue.ToString());
-                        m.WriteMemory("base+003CA150,0", "2bytes", roomID.ToString());
-                        m.WriteMemory("0x68D2F59A", "byte", Settable.blurAmount);
-                    }*/
+                        m.WriteMemory("base+211FAA", "byte", "3");
+                    }
+                    else
+                    {
+                        m.WriteMemory("base+211FAA", "byte", "4");
+                    }
+
+                    if (Settable.dontknow == true)
+                    {
+                        m.WriteMemory("Will You Snail.exe+46A50A", "byte", "0x10");
+                        //m.WriteMemory("Will You Snail.exe+46A50B", "byte", "0x90");
+                    }
+                    else
+                    {
+                        m.WriteMemory("Will You Snail.exe+46A50A", "byte", "0x11");
+                        //m.WriteMemory("Will You Snail.exe+46A50B", "byte", "0x46");
+                    }
+
+                    if (Settable.disableTexturesB == true)
+                    {
+                        m.WriteMemory("base+3DAEE4", "byte", "A3");
+                    }
+                    else
+                    {
+                        m.WriteMemory("base+3DAEE4", "byte", "A4");
+                    }
+
+                    //Deaths
+                    if (Settable.saved == true)
+                    {
+                        if (Settable.isDeath == true)
+                        {
+                            m.WriteMemory("base+007B9CB0,2c,10,6d8,6f0", "double", Settable.deathCount);
+                        }
+                        if (Settable.isRoom == true)
+                        {
+                            m.WriteMemory("base+003CA150,0", "2bytes", Settable.roomIDD);
+                            Thread.Sleep(1000);
+                        }
+
+                        if (Settable.yPosChange == true)
+                        {
+                            m.WriteMemory("base+007C41C4,0,248,c,38,8,a4", "float", Settable.yPos);
+                            Thread.Sleep(1000);
+                           // m.WriteMemory("base+007C41C4,0,24c,c,44,8,a4", "float", ypos1.ToString());
+                        }
+
+                        if (Settable.xPosChange == true)
+                        {
+                            m.WriteMemory("base+007C41E8,0,134,130,A0", "float", Settable.xPos);
+                        }
+
+                    }
+
+                    //GAME TIMER
+
+                    if (Timers.save == true)
+                    {
+
+                        //game time
+                        m.WriteMemory("base+007B4A3C,0,2c,10,108,50", "double", Timers.customGMTIME);
+
+                        //chapter time
+                        m.WriteMemory("base+007B4A3C,0,2c,10,798,3c0", "double", Timers.customCHPTTIME);
+
+                        //level time
+                        m.WriteMemory("base+007B9CB0,2c,10,480,4a0", "double", Timers.customLVLTIME);
+                        Timers.save = false;
+                    }
+
+                    //Game
+                    if (stopGameTimer == true)
+                    {
+                        m.FreezeValue("base+007B4A3C,0,2c,10,108,50", "double", currentgmTime.ToString());
+                    }
+                    else
+                    {
+                        m.UnfreezeValue("base+007B4A3C,0,2c,10,108,50");
+                    }
 
 
+                    //Chapter
+                    if (stopCHPTTimer == true)
+                    {
+                        m.FreezeValue("base+007B4A3C,0,2c,10,798,3c0", "double", currentchptTime.ToString());
+                    }
+                    else
+                    {
+                        m.UnfreezeValue("base+007B4A3C,0,2c,10,798,3c0");
+                    }
+
+                    //LEVEL TIME
 
 
-                }
+                    if (stopLVLTimer == true)
+                    {
+                        m.FreezeValue("base+007B9CB0,2c,10,480,4a0", "double", currentlvlTime.ToString());
+                    }
+                    else
+                    {
+                        m.UnfreezeValue("base+007B9CB0,2c,10,480,4a0");
+                    }
 
-                //GAME TIMER
-
-                if (Timers.save == true)
-                {
-
-                    //game time
-                    m.WriteMemory("base+007B4A3C,0,2c,10,108,50", "double", Timers.customGMTIME);
-
-                    //chapter time
-                    m.WriteMemory("base+007B4A3C,0,2c,10,798,3c0", "double", Timers.customCHPTTIME);
-
-                    //level time
-                    m.WriteMemory("base+007B9CB0,2c,10,480,4a0", "double", Timers.customLVLTIME);
-                    Timers.save = false;
-                }
-
-                //Game
-                if (stopGameTimer == true)
-                {
-                    m.FreezeValue("base+007B4A3C,0,2c,10,108,50", "double", currentgmTime.ToString());
-                }
-                else
-                {
-                    m.UnfreezeValue("base+007B4A3C,0,2c,10,108,50");
-                }
+                    Thread.Sleep(250);
 
 
-                //Chapter
-                if (stopCHPTTimer == true)
-                {
-                    m.FreezeValue("base+007B4A3C,0,2c,10,798,3c0", "double", currentchptTime.ToString());
-                }
-                else
-                {
-                    m.UnfreezeValue("base+007B4A3C,0,2c,10,798,3c0");
-                }
-
-                //LEVEL TIME
-
-
-                if (stopLVLTimer == true)
-                {
-                    m.FreezeValue("base+007B9CB0,2c,10,480,4a0", "double", currentlvlTime.ToString());
-                }
-                else
-                {
-                    m.UnfreezeValue("base+007B9CB0,2c,10,480,4a0");
-                }
-
-                Thread.Sleep(250);
 
 
                
 
+
             }
-        
-
-
+        }
         }
 
         private void MainForm_Shown(object sender, EventArgs e)
@@ -272,6 +246,7 @@ namespace WYSTrainer
             {
                 ProcOpenLabel.Text = "Found!";
                 ProcOpenLabel.ForeColor = Color.LightGreen;
+           
             }
             else
             {

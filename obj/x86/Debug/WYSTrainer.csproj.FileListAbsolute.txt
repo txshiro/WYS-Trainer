@@ -7,6 +7,7 @@ C:\Users\LENOVO\Desktop\WYSTrainer C#\WYSTrainer\bin\x86\Debug\Memory.xml
 C:\Users\LENOVO\Desktop\WYSTrainer C#\WYSTrainer\obj\x86\Debug\WYSTrainer.HP.resources
 C:\Users\LENOVO\Desktop\WYSTrainer C#\WYSTrainer\obj\x86\Debug\WYSTrainer.MainForm.resources
 C:\Users\LENOVO\Desktop\WYSTrainer C#\WYSTrainer\obj\x86\Debug\WYSTrainer.Properties.Resources.resources
+C:\Users\LENOVO\Desktop\WYSTrainer C#\WYSTrainer\obj\x86\Debug\WYSTrainer.Settable.resources
 C:\Users\LENOVO\Desktop\WYSTrainer C#\WYSTrainer\obj\x86\Debug\WYSTrainer.Statisticts.resources
 C:\Users\LENOVO\Desktop\WYSTrainer C#\WYSTrainer\obj\x86\Debug\WYSTrainer.Timers.resources
 C:\Users\LENOVO\Desktop\WYSTrainer C#\WYSTrainer\obj\x86\Debug\WYSTrainer.csproj.GenerateResource.cache
@@ -14,5 +15,4 @@ C:\Users\LENOVO\Desktop\WYSTrainer C#\WYSTrainer\obj\x86\Debug\WYSTrainer.csproj
 C:\Users\LENOVO\Desktop\WYSTrainer C#\WYSTrainer\obj\x86\Debug\WYSTrainer.csproj.CopyComplete
 C:\Users\LENOVO\Desktop\WYSTrainer C#\WYSTrainer\obj\x86\Debug\WYSTrainer.exe
 C:\Users\LENOVO\Desktop\WYSTrainer C#\WYSTrainer\obj\x86\Debug\WYSTrainer.pdb
-C:\Users\LENOVO\Desktop\WYSTrainer C#\WYSTrainer\obj\x86\Debug\WYSTrainer.Settable.resources
 C:\Users\LENOVO\Desktop\WYSTrainer C#\WYSTrainer\obj\x86\Debug\WYSTrainer.csprojAssemblyReference.cache
