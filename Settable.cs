@@ -73,15 +73,7 @@ namespace WYSTrainer
 
         private void collisionsOFF_CheckedChanged(object sender, EventArgs e)
         {
-            if (collisionsOFF.Checked)
-            {
-                MainForm.collisionoff = true;
-
-            }
-            else
-            {
-                MainForm.collisionoff = false;
-            }
+            
         }
 
         private void roomid_TextChanged(object sender, EventArgs e)

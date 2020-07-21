@@ -4,9 +4,6 @@ using System.Drawing;
 using System.Threading;
 using Memory;
 using System.Windows.Forms;
-using System.Diagnostics;
-using System.Text;
-using System.Threading.Tasks;
 
 //base+3F40DC, "byte" , "142" - reset non stop
 
@@ -45,6 +42,11 @@ namespace WYSTrainer
         //poss
         public static float xpos1;
         public static float ypos1;
+
+        public bool canstopgm;
+        public bool canstopchpt;
+        public bool canstoplvl;
+
         public MainForm()
         {
             InitializeComponent();
@@ -56,31 +58,30 @@ namespace WYSTrainer
         {
             ProcOpen = m.OpenProcess("Will You Snail");
 
+
             if (!ProcOpen)
             {
                 ProcOpenLabel.Text = "Not found!";
                 ProcOpenLabel.ForeColor = Color.Red;
                 Thread.Sleep(1000);
             }
-            else
-            {
-
-            }
             bgWorker.ReportProgress(0);
-           if(ProcOpen)
+            if (ProcOpen)
             {
-                ProcOpenLabel.Text = "Found!";
-                ProcOpenLabel.ForeColor = Color.LightGreen;
                 while (true)
                 {
-                    int vlInt = m.Read2Byte("base+007C1DAC,14,4");
-                    int roomID = m.Read2Byte("base+003CA150,0");
 
-                    double diffValue = m.ReadDouble("base+007B4A3C,0,2c,10,7ec,300");
-                    double deathValue = m.ReadDouble("base+007B9CB0,2c,10,6d8,6f0");
-                    double chapter = m.ReadDouble("base+007B9CB0,2c,10,2F4,380");
-                    xpos1 = m.ReadFloat("base+00A0A850,C");
-                    ypos1 = m.ReadFloat("base+009E003C,4");
+                    ProcOpenLabel.Text = "Found!";
+                    ProcOpenLabel.ForeColor = Color.LightGreen;
+
+                    int vlInt = m.Read2Byte("base+007D6724,14,4");
+                    int roomID = m.Read2Byte("Will You Snail.exe+9E9FE8");
+
+                    double diffValue = m.ReadDouble("base+007C93B4,0,2c,10,858,410");
+                    double deathValue = m.ReadDouble("base+007CE628,2c,10,b04,3e0");
+                    double chapter = m.ReadDouble("base+007CE6A0,2c,10,4ec,e0");
+                    xpos1 = m.ReadFloat("base+009F49B4,0");
+                    ypos1 = m.ReadFloat("base+009F49B4,4");
 
                     Statisticts.vlCount = vlInt;
                     Statisticts.roomID = roomID;
@@ -90,40 +91,36 @@ namespace WYSTrainer
                     Statisticts.xpos1 = xpos1;
                     Statisticts.ypos1 = ypos1;
 
-                  
+
                     statisticts1.NotifyValueChanged();
                     //Get current timers
                     if (getLVLTimer == true)
                     {
-                        currentlvlTime = m.ReadDouble("base+007B9CB0,2c,10,480,4a0");
+                        currentlvlTime = m.ReadDouble("base+007CE628,2c,10,690,e0");
                         getLVLTimer = false;
                     }
 
                     if (getGameTimer == true)
                     {
-                        currentgmTime = m.ReadDouble("base+007B4A3C,0,2c,10,108,50");
+                        currentgmTime = m.ReadDouble("base+007CE6A0,2c,10,84,310");
                         getGameTimer = false;
                     }
 
-                    else
-                    {
-                        m.WriteMemory("base+360CDE", "byte", "0");
-                    }
                     //CHAPTER TIME
                     if (getCHPTTimer == true)
                     {
-                        currentchptTime = m.ReadDouble("base+007B4A3C,0,2c,10,798,3c0");
+                        currentchptTime = m.ReadDouble("base+007CE6A0,2c,10,570,380");
                         getCHPTTimer = false;
                     }
 
                     //OTHER THINGS
                     if (aion == true)
                     {
-                        m.WriteMemory("base+211FAA", "byte", "3");
+                        m.WriteMemory("base+21C1CA", "byte", "3");
                     }
                     else
                     {
-                        m.WriteMemory("base+211FAA", "byte", "4");
+                        m.WriteMemory("base+21C1CA", "byte", "4");
                     }
 
                     if (Settable.dontknow == true)
@@ -151,11 +148,11 @@ namespace WYSTrainer
                     {
                         if (Settable.isDeath == true)
                         {
-                            m.WriteMemory("base+007B9CB0,2c,10,6d8,6f0", "double", Settable.deathCount);
+                            m.WriteMemory("base+007CE628,2c,10,b04,3e0", "double", Settable.deathCount);
                         }
                         if (Settable.isRoom == true)
                         {
-                            m.WriteMemory("base+003CA150,0", "2bytes", Settable.roomIDD);
+                            m.WriteMemory("Will You Snail.exe+9E9FE8", "2bytes", Settable.roomIDD);
                             Thread.Sleep(1000);
                         }
 
@@ -163,7 +160,7 @@ namespace WYSTrainer
                         {
                             m.WriteMemory("base+007C41C4,0,248,c,38,8,a4", "float", Settable.yPos);
                             Thread.Sleep(1000);
-                           // m.WriteMemory("base+007C41C4,0,24c,c,44,8,a4", "float", ypos1.ToString());
+                            // m.WriteMemory("base+007C41C4,0,24c,c,44,8,a4", "float", ypos1.ToString());
                         }
 
                         if (Settable.xPosChange == true)
@@ -179,35 +176,45 @@ namespace WYSTrainer
                     {
 
                         //game time
-                        m.WriteMemory("base+007B4A3C,0,2c,10,108,50", "double", Timers.customGMTIME);
+                        m.WriteMemory("base+007CE6A0,2c,10,84,310", "double", Timers.customGMTIME);
 
                         //chapter time
-                        m.WriteMemory("base+007B4A3C,0,2c,10,798,3c0", "double", Timers.customCHPTTIME);
+                        m.WriteMemory("base+007CE6A0,2c,10,570,380", "double", Timers.customCHPTTIME);
 
                         //level time
-                        m.WriteMemory("base+007B9CB0,2c,10,480,4a0", "double", Timers.customLVLTIME);
+                        m.WriteMemory("base+007CE628,2c,10,690,e0", "double", Timers.customLVLTIME);
                         Timers.save = false;
                     }
 
                     //Game
                     if (stopGameTimer == true)
                     {
-                        m.FreezeValue("base+007B4A3C,0,2c,10,108,50", "double", currentgmTime.ToString());
+                        m.FreezeValue("base+007CE6A0,2c,10,84,310", "double", currentgmTime.ToString());
+                        canstopgm = true;
                     }
                     else
                     {
-                        m.UnfreezeValue("base+007B4A3C,0,2c,10,108,50");
+                        if(canstopgm == true)
+                        {
+                            m.UnfreezeValue("base+007CE6A0,2c,10,84,310");
+                        }
+                        canstopgm = false;
                     }
 
 
                     //Chapter
                     if (stopCHPTTimer == true)
                     {
-                        m.FreezeValue("base+007B4A3C,0,2c,10,798,3c0", "double", currentchptTime.ToString());
+                        m.FreezeValue("base+007CE6A0,2c,10,570,380", "double", currentchptTime.ToString());
+                        canstopchpt = true;
                     }
                     else
                     {
-                        m.UnfreezeValue("base+007B4A3C,0,2c,10,798,3c0");
+                        if(canstopchpt == true)
+                        {
+                            m.UnfreezeValue("base+007CE6A0,2c,10,570,380"); 
+                        }
+                        canstopchpt = false;
                     }
 
                     //LEVEL TIME
@@ -215,28 +222,29 @@ namespace WYSTrainer
 
                     if (stopLVLTimer == true)
                     {
-                        m.FreezeValue("base+007B9CB0,2c,10,480,4a0", "double", currentlvlTime.ToString());
+                        canstoplvl = true;
+                        m.FreezeValue("base+007CE628,2c,10,690,e0", "double", currentlvlTime.ToString());
                     }
                     else
                     {
-                        m.UnfreezeValue("base+007B9CB0,2c,10,480,4a0");
+                        if(canstoplvl == true)
+                        { 
+                            m.UnfreezeValue("base+007CE628,2c,10,690,e0");
+                        }
+                        canstoplvl = false;
                     }
 
                     Thread.Sleep(250);
-
-
-
-
-               
-
-
-            }
+                }
         }
         }
 
         private void MainForm_Shown(object sender, EventArgs e)
         {
+            if(!bgWorker.IsBusy)
+            {
             bgWorker.RunWorkerAsync();
+            }
 
         }
 

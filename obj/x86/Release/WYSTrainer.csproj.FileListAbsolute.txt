@@ -19,3 +19,18 @@ C:\Users\LENOVO\Desktop\WYSTrainer C#\WYSTrainer\obj\x86\Release\WYSTrainer.cspr
 C:\Users\LENOVO\Desktop\WYSTrainer C#\WYSTrainer\obj\x86\Release\WYSTrainer.csproj.CopyComplete
 C:\Users\LENOVO\Desktop\WYSTrainer C#\WYSTrainer\obj\x86\Release\WYSTrainer.exe
 C:\Users\LENOVO\Desktop\WYSTrainer C#\WYSTrainer\obj\x86\Release\WYSTrainer.pdb
+C:\Users\LENOVO\Desktop\WYSTrainer C# Application\WYSTrainer\obj\x86\Release\WYSTrainer.csprojAssemblyReference.cache
+C:\Users\LENOVO\Desktop\WYSTrainer C# Application\WYSTrainer\obj\x86\Release\WYSTrainer.HP.resources
+C:\Users\LENOVO\Desktop\WYSTrainer C# Application\WYSTrainer\obj\x86\Release\WYSTrainer.MainForm.resources
+C:\Users\LENOVO\Desktop\WYSTrainer C# Application\WYSTrainer\obj\x86\Release\WYSTrainer.Properties.Resources.resources
+C:\Users\LENOVO\Desktop\WYSTrainer C# Application\WYSTrainer\obj\x86\Release\WYSTrainer.Settable.resources
+C:\Users\LENOVO\Desktop\WYSTrainer C# Application\WYSTrainer\obj\x86\Release\WYSTrainer.Statisticts.resources
+C:\Users\LENOVO\Desktop\WYSTrainer C# Application\WYSTrainer\obj\x86\Release\WYSTrainer.Timers.resources
+C:\Users\LENOVO\Desktop\WYSTrainer C# Application\WYSTrainer\obj\x86\Release\WYSTrainer.csproj.GenerateResource.cache
+C:\Users\LENOVO\Desktop\WYSTrainer C# Application\WYSTrainer\obj\x86\Release\WYSTrainer.csproj.CoreCompileInputs.cache
+C:\Users\LENOVO\Desktop\WYSTrainer C# Application\WYSTrainer\obj\x86\Release\WYSTrainer.exe
+C:\Users\LENOVO\Desktop\WYSTrainer C# Application\WYSTrainer\obj\x86\Release\WYSTrainer.pdb
+C:\Users\LENOVO\Desktop\WYSTrainer C# Application\Program\WYSTrainer.exe.config
+C:\Users\LENOVO\Desktop\WYSTrainer C# Application\Program\WYSTrainer.exe
+C:\Users\LENOVO\Desktop\WYSTrainer C# Application\Program\WYSTrainer.pdb
+C:\Users\LENOVO\Desktop\WYSTrainer C# Application\WYSTrainer\obj\x86\Release\WYSTrainer.csproj.CopyComplete

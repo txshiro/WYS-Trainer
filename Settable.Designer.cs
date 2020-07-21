@@ -92,7 +92,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label2.Location = new System.Drawing.Point(23, 25);
+            this.label2.Location = new System.Drawing.Point(20, 25);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(57, 22);
             this.label2.TabIndex = 4;
@@ -115,7 +115,7 @@
             this.saveSet.BackColor = System.Drawing.Color.Silver;
             this.saveSet.FlatAppearance.BorderSize = 0;
             this.saveSet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.saveSet.Location = new System.Drawing.Point(73, 172);
+            this.saveSet.Location = new System.Drawing.Point(73, 151);
             this.saveSet.Name = "saveSet";
             this.saveSet.Size = new System.Drawing.Size(75, 23);
             this.saveSet.TabIndex = 6;

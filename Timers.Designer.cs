@@ -182,16 +182,15 @@
             // 
             // Save
             // 
-            this.Save.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.Save.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.Save.FlatAppearance.BorderSize = 0;
             this.Save.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Save.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.Save.Location = new System.Drawing.Point(109, 131);
             this.Save.Name = "Save";
-            this.Save.Size = new System.Drawing.Size(75, 27);
+            this.Save.Size = new System.Drawing.Size(75, 26);
             this.Save.TabIndex = 12;
             this.Save.Text = "Save";
-            this.Save.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.Save.UseVisualStyleBackColor = false;
             this.Save.Click += new System.EventHandler(this.Save_Click);
             // 

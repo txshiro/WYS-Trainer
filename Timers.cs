@@ -124,9 +124,24 @@ namespace WYSTrainer
             else
             {
                 save = true;
+
+                var backgroundWorker = new BackgroundWorker();
+                backgroundWorker.DoWork += (s, ea) => Thread.Sleep(TimeSpan.FromSeconds(1));
+
+                // ...and then set the text back to the original when the sleep is done
+                // (also, re-enable the button)
+                backgroundWorker.RunWorkerCompleted += (s, ea) =>
+                {
+                    Save.Text = "Save";
+                    Save.BackColor = Color.Gray;
+                    customCHPTTimer.Text = string.Empty;
+                    customLVLTIMER.Text = string.Empty;
+                    CustomGMTIME.Text = string.Empty;
+
+                };
                 Save.BackColor = Color.Green;
                 Save.Text = "Saved";
-               
+
             }
         }
 
